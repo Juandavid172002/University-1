@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Data\UniversityContext.cs" />
     <Compile Include="DTOs\CourseDTO.cs" />
+    <Compile Include="DTOs\DepartmentDTO.cs" />
     <Compile Include="DTOs\InstructorDTO.cs" />
     <Compile Include="DTOs\OfficeAssignmentDTO.cs" />
     <Compile Include="DTOs\StudentDTO.cs" />

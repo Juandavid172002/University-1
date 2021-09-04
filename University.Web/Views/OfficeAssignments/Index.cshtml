@@ -16,19 +16,18 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Location)
-        </th>
+        </th>        
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Instructor.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructor.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>        
+    </tr>
+}
 
 </table>
