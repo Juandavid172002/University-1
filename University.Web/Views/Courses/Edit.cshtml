@@ -1,0 +1,23 @@
+﻿@model University.BL.DTOs.CourseDTO
+
+@{ ViewBag.Title = "Edit"; }
+
+<h2>Edit</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form action="/Courses/Edit" method="post">
+
+    @Html.HiddenFor(m => m.CourseID)
+
+    @Html.DisplayNameFor(m => m.Title)
+    @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+
+    @Html.DisplayNameFor(m => m.Credits)
+    @Html.EditorFor(m => m.Credits, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.Credits, "", new { @class = "text-danger" })
+    <hr />
+
+    <input type="submit" value="Edit" class="btn btn-primary" />
+</form>

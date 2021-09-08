@@ -9,7 +9,7 @@ using PagedList;
 
 namespace University.Web.Controllers
 {
-    public class InstructorController : Controller
+    public class InstructorsController : Controller
     {
         
             private readonly UniversityContext context = new UniversityContext();
@@ -30,20 +30,20 @@ namespace University.Web.Controllers
                                         FirstMidName = x.FirstMidName,
                                        HireDate = x.HireDate
                                     }).ToList();
-                #region Cursos Asociados
+                #region Departamentos Asociados
                 if (InstructorID != null)
                 {
                     
 
                     var departments = (from q in context.Departments
-                                   join r in context.Departments on q.DepartmentID equals r.DepartmentID
+                                   join r in context.Instructors on q.InstructorID equals r.ID
                                    where q.InstructorID == InstructorID
-                                   select new Department
+                                   select new DepartmentDTO
                                    {
-                                       DepartmentID = r.DepartmentID,
-                                       Name = r.Name,
-                                       Budget = r.Budget,
-                                       StartDate = r.StartDate,
+                                       
+                                       DepartmentID = q.DepartmentID,
+                                       Name = q.Name,
+                                       Budget = q.Budget
 
                                    }).ToList();
 

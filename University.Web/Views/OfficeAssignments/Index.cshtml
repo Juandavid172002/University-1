@@ -20,14 +20,18 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Instructor.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>        
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Instructor.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Location)
+    </td>
+    <td>
+    @Html.ActionLink("Edit", "Edit", "OfficeAssignments", new { instructorid = item.InstructorID }, new { @class = "btn btn-sm btn-primary" })
+    @Html.ActionLink("Delete", "Delete", "OfficeAssignments", new { instructorid = item.InstructorID }, new { @class = "btn btn-sm btn-primary" })
+    </td>
+</tr>
 }
 
 </table>

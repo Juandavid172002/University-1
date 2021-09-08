@@ -8,16 +8,15 @@
 
 <h2>Bienvenido al Index</h2>
 
-@Html.ActionLink("New", "Create", "Instructor", null, new { @class = "btn btn-sm btn-primary" })
-<hr />
+@Html.ActionLink("New", "Create", "Instructors", null, new { @class = "btn btn-sm btn-primary" })
 <hr />
 
-@using (Html.BeginForm("Index", "Instructor", FormMethod.Get))
+@using (Html.BeginForm("Index", "Instructors", FormMethod.Get))
 {
     <p>
         <select name="PageSize" id="PageSize" class="form-control">
-            <option @if ((int)ViewBag.PageSize == 4) { @Html.Raw("selected") }>10</option>
-            <option @if ((int)ViewBag.PageSize == 5) { @Html.Raw("selected") }>15</option>
+            <option @if ((int)ViewBag.PageSize == 10) { @Html.Raw("selected") }>10</option>
+            <option @if ((int)ViewBag.PageSize == 15) { @Html.Raw("selected") }>15</option>
         </select>
         <br />
         <input type="submit" value="Apply" class="btn btn-danger" />
@@ -44,9 +43,9 @@
                 <td>@item.FirstMidName</td>
                 <td>@item.HireDate</td>
                 <td>
-                    @Html.ActionLink("Departaments", "Index", "Instructor", new { studentId = item.ID }, new { @class = "btn btn-sm btn-info" })
-                    @Html.ActionLink("Edit", "Edit", "Instructor", new { id = item.ID }, new { @class = "btn btn-sm btn-primary" })
-                    @Html.ActionLink("Delete", "Delete", "Instructor", new { id = item.ID }, new { @class = "btn btn-sm btn-primary" })
+                    @Html.ActionLink("Departaments", "Index", "Instructors", new { InstructorID = item.ID }, new { @class = "btn btn-sm btn-info" })
+                    @Html.ActionLink("Edit", "Edit", "Instructors", new { id = item.ID }, new { @class = "btn btn-sm btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", "Instructors", new { id = item.ID }, new { @class = "btn btn-sm btn-primary" })
                 </td>
             </tr>
         }
@@ -56,7 +55,7 @@
 Page @(Model.PageCount < Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
 <br />
 Total Item Count @Model.TotalItemCount
-@Html.PagedListPager(Model, page => Url.Action("Index", "instructor", new { page, pageSize = ViewBag.PageSize }))
+@Html.PagedListPager(Model, page => Url.Action("Index", "Instructors", new { page, pageSize = ViewBag.PageSize }))
 
 @if (ViewBag.Data != null && ViewBag.Message != null)
 {
@@ -66,30 +65,32 @@ Total Item Count @Model.TotalItemCount
     </ul>
 }
 
-@if (ViewBag.Department != null)
+@if (ViewBag.Departments != null)
 {
     <h1>Department</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>DepartmentID</th>
                 <th>Name</th>
-                <th>
+                <th>Budget</th>
+                <th>StarDate</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in(List < University.BL.DTOs.DepartmentDTO>)ViewBag.Departments)
+            @foreach (var item in (List<University.BL.DTOs.DepartmentDTO>)ViewBag.Departments)
             {
             <tr>
-                <td>@item.ID</td>
+                <td>@item.DepartmentID</td>
                 <td>@item.Name</td>
                 <td>@item.Budget</td>
-<td>@item.StartDate</td>   
+                 <td>@item.StartDate</td>   
             </tr>
             }
         </tbody>
     </table>
 }
+
 
 
 

@@ -1,0 +1,27 @@
+﻿@model University.BL.DTOs.CourseDTO
+
+@{ ViewBag.Title = "Create"; }
+
+<h2>Create Courses</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+<form action="/Courses/Create" method="post">
+
+    @Html.DisplayNameFor(m => m.CourseID)
+    @Html.EditorFor(m => m.CourseID, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.CourseID, "", new { @class = "text-danger" })
+
+    @Html.DisplayNameFor(m => m.Title)
+    @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+
+    @Html.DisplayNameFor(m => m.Credits)
+    @Html.EditorFor(m => m.Credits, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(m => m.Credits, "", new { @class = "text-danger" })
+
+    <br />
+    <input type="submit" value="create" class="btn btn-primary" />
+
+</form>
+

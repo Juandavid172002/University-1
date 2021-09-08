@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace University.BL.Models
 {
     [Table("Course", Schema = "dbo")]
-    public class Course
+    public class Courses
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

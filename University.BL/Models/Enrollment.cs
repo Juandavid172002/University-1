@@ -16,7 +16,7 @@ namespace University.BL.Models
         public int StudentID { get; set; }
 
         //navs
-        public Course Course { get; set; }
+        public Courses Course { get; set; }
         public Student Student { get; set; }
     }
 }
