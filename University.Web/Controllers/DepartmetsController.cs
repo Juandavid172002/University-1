@@ -16,13 +16,21 @@ namespace University.Web.Controllers
         [HttpGet]
         public ActionResult Index(int? departmentid, int? pageSize, int? page)
         {
-            var query = context.Departments.ToList();
+            var query = context.Departments.Include("Instructor").ToList();
             var co = query.Select(x => new DepartmentDTO
             {
                 DepartmentID = x.DepartmentID,
                 Name = x.Name,
                 Budget = x.Budget,
                 StartDate = x.StartDate,
+                InstructorID= x.InstructorID,
+                Instructor = new InstructorDTO
+                {
+                    FirstMidName = x.Instructor.FirstMidName,
+                    LastName = x.Instructor.LastName
+         
+
+                }
                 
                 
             }).ToList();
@@ -47,8 +55,11 @@ namespace University.Web.Controllers
             return View(co.ToPagedList(page.Value, pageSize.Value));
         }
         [HttpGet]
+        
         public ActionResult Create()
         {
+            LoadData();
+           
             return View();
         }
         [HttpPost]
@@ -56,11 +67,12 @@ namespace University.Web.Controllers
         {
             try
             {
+                
                 if (!ModelState.IsValid)
 
                     return View(department);
 
-
+                LoadData();
                 context.Departments.Add(new Department
                 {
                     DepartmentID = department.DepartmentID,
@@ -80,7 +92,16 @@ namespace University.Web.Controllers
             return View(department);
 
         }
-
+        private void LoadData()
+        {
+            var instructors = context.Instructors.Select(x => new InstructorDTO
+            {
+                ID = x.ID,
+                FirstMidName = x.FirstMidName,
+                LastName = x.LastName
+            }).ToList();
+            ViewData["Instructors"] = new SelectList(instructors, "ID", "FullName");
+        }
         [HttpGet]
         public ActionResult Edit(int departmentid)
         {

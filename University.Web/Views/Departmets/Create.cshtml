@@ -7,28 +7,30 @@
 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
 <form action="/Departmets/Create" method="post">
+    <div>
+        @Html.DisplayNameFor(m => m.DepartmentID)
+        @Html.EditorFor(m => m.DepartmentID, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.DepartmentID, "", new { @class = "text-danger" })
 
-    @Html.DisplayNameFor(m => m.DepartmentID)
-    @Html.EditorFor(m => m.DepartmentID, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(m => m.DepartmentID, "", new { @class = "text-danger" })
+        @Html.DisplayNameFor(m => m.Name)
+        @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 
-    @Html.DisplayNameFor(m => m.Name)
-    @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        @Html.DisplayNameFor(m => m.Budget)
+        @Html.EditorFor(m => m.Budget, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Budget, "", new { @class = "text-danger" })
 
-    @Html.DisplayNameFor(m => m.Budget)
-    @Html.EditorFor(m => m.Budget, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(m => m.Budget, "", new { @class = "text-danger" })
-
-    @Html.DisplayNameFor(m => m.StartDate)
-    @Html.EditorFor(m => m.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(m => m.StartDate, "", new { @class = "text-danger" })
-
-    @Html.DisplayNameFor(m => m.InstructorID)
-    @Html.EditorFor(m => m.InstructorID, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(m => m.InstructorID, "", new { @class = "text-danger" })
-
-    <br />
-    <input type="submit" value="create" class="btn btn-primary" />
-
+        @Html.DisplayNameFor(m => m.StartDate)
+        @Html.EditorFor(m => m.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.StartDate, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.InstructorID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.InstructorID, (SelectList)ViewData["Instructors"], new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.InstructorID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <input type="submit" value="create" class="btn btn-primary" />
+    </div>
 </form>

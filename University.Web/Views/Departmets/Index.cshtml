@@ -27,7 +27,7 @@
             <th>Name</th>
             <th>Budget</th>
             <th>StartDate</th>
-            <th>InstructorID</th>
+            <th>Instructor</th>
             
             <th>Options</th>
         </tr>
@@ -40,7 +40,7 @@
     <td>@item.Name</td>
     <td>@item.Budget</td>
     <td>@item.StartDate</td>
-    <td>@item.InstructorID</td>
+    <td>@item.Instructor.FullName</td>
     <td>
         @Html.ActionLink("Edit", "Edit", "Departmets", new { departmentID = item.DepartmentID }, new { @class = "btn btn-sm btn-primary" })
         @Html.ActionLink("Delete", "Delete", "Departmets", new { departmentID = item.DepartmentID }, new { @class = "btn btn-sm btn-danger" })
